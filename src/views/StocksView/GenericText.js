@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React, {Profiler, memo} from 'react';
 import {Text} from 'react-native';
 
 const GenericText = props => {

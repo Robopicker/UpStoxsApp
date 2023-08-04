@@ -1,6 +1,7 @@
 const intitialState = {
   data: [],
   cart: {},
+  change: 0,
 };
 export default function reducer(state = intitialState, action) {
   switch (action.type) {
@@ -8,6 +9,12 @@ export default function reducer(state = intitialState, action) {
       return {
         ...state,
         data: action.payload,
+      };
+    }
+    case 'CHANGE_VALUE': {
+      return {
+        ...state,
+        change: action.payload,
       };
     }
     case 'ADD_TO_CHECKOUT': {

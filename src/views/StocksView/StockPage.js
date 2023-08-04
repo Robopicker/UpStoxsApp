@@ -4,7 +4,7 @@ import GenericText from './GenericText';
 import TotalStockView from './TotalStockView';
 import StockList from './StockList';
 import {useDispatch} from 'react-redux';
-import {fetchStockData} from './apiCall';
+import {fetchStockData} from '../../api/apiCall';
 
 const styles = StyleSheet.create({
   container: {

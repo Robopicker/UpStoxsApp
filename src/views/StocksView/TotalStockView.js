@@ -1,6 +1,6 @@
 import React, {memo} from 'react';
 import {View, StyleSheet} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import GenericText from './GenericText';
 import {API_UTILS} from './utils';
 const styles = StyleSheet.create({
@@ -28,24 +28,16 @@ const styles = StyleSheet.create({
   },
 });
 function TotalStockView() {
-  const {
-    totalCurrentValue,
-    totalInvestmentValue,
-    totalPL,
-    todayPL,
-    status,
-    change,
-  } = useSelector(({stock}) => {
-    return {
-      totalCurrentValue: stock.data?.totalCurrentValue,
-      totalInvestmentValue: stock?.data?.totalInvestmentValue,
-      status: stock.status,
-      totalPL: stock?.data?.totalPL,
-      todayPL: stock?.data?.todayPL,
-      change: stock?.change,
-    };
-  });
-  // const dispatch = useDispatch();
+  const {totalCurrentValue, totalInvestmentValue, totalPL, todayPL, status} =
+    useSelector(({stock, home}) => {
+      return {
+        totalCurrentValue: stock.data?.totalCurrentValue,
+        totalInvestmentValue: stock?.data?.totalInvestmentValue,
+        status: stock.status,
+        totalPL: stock?.data?.totalPL,
+        todayPL: stock?.data?.todayPL,
+      };
+    });
   const renderTextRow = (title, value) => (
     <View style={styles.textRowStyle}>
       <GenericText fontWeight={'800'} align="center">
@@ -72,16 +64,6 @@ function TotalStockView() {
       {renderTextRow("Todays's profit & Loss:", todayPL)}
       <View style={styles.separatorHeight} />
       {renderTextRow('Profit & Loss:', totalPL)}
-      <GenericText>{change}</GenericText>
-      {/* <Button
-        title="click me"
-        onPress={() => {
-          dispatch({
-            type: 'CHANGE_VALUE',
-            payload: change + 1,
-          });
-        }}
-      /> */}
     </View>
   );
 }
