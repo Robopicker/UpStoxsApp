@@ -43,12 +43,8 @@ const styles = StyleSheet.create({
 });
 function StockList(props) {
   const {onRetryClicked} = props;
-  const {data, status} = useSelector(({stock}) => {
-    return {
-      data: stock.data?.stockList,
-      status: stock.status,
-    };
-  });
+  const data = useSelector(({stock}) => stock?.data?.stockList);
+  const status = useSelector(({stock}) => stock?.status);
   const renderStockItem = ({item, index}) => (
     <View style={styles.backgroundColor}>
       <View style={styles.stockItemStyle}>

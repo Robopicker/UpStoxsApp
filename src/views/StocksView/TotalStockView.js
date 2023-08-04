@@ -28,16 +28,15 @@ const styles = StyleSheet.create({
   },
 });
 function TotalStockView() {
-  const {totalCurrentValue, totalInvestmentValue, totalPL, todayPL, status} =
-    useSelector(({stock, home}) => {
-      return {
-        totalCurrentValue: stock.data?.totalCurrentValue,
-        totalInvestmentValue: stock?.data?.totalInvestmentValue,
-        status: stock.status,
-        totalPL: stock?.data?.totalPL,
-        todayPL: stock?.data?.todayPL,
-      };
-    });
+  const totalCurrentValue = useSelector(
+    ({stock}) => stock?.data?.totalCurrentValue,
+  );
+  const totalInvestmentValue = useSelector(
+    ({stock}) => stock?.data?.totalInvestmentValue,
+  );
+  const status = useSelector(({stock}) => stock.status);
+  const totalPL = useSelector(({stock}) => stock?.data?.totalPL);
+  const todayPL = useSelector(({stock}) => stock?.data?.todayPL);
   const renderTextRow = (title, value) => (
     <View style={styles.textRowStyle}>
       <GenericText fontWeight={'800'} align="center">
